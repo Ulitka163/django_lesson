@@ -29,6 +29,6 @@ def time_view(request):
 
 
 def workdir_view(request):
-    dir_file = listdir("C:\GIT\Django\dj-homeworks\\1.1-first-project\\first_project")
+    dir_file = listdir()
     msg = f'Файлы содержащиеся в рабочей директории: {dir_file}'
     return HttpResponse(msg)
