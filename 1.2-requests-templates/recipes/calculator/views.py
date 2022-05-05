@@ -23,8 +23,8 @@ DATA = {
 
 def recipe(request, name):
     serving = int(request.GET.get('servings', 1))
-    recipe_ = DATA[name]
-    for key, val in recipe_.items():
+    recipe_ = {}
+    for key, val in DATA[name].items():
         recipe_[key] = val * serving
 
     context = {
