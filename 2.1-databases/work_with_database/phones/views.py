@@ -8,8 +8,18 @@ def index(request):
 
 
 def show_catalog(request):
+    phone_objects = Phone.objects.all()
+    phone_dict = {}
+    for p in phone_objects:
+        phone_dict[p.id] = {'name': p.name,
+                            'price': p.price,
+                            'image': p.image,
+                            'release_date': p.release_date,
+                            'lte_exists': p.lte_exists,
+                            'slug': p.slug
+                            }
     template = 'catalog.html'
-    context = {}
+    context = phone_dict
     return render(request, template, context)
 
 

@@ -13,7 +13,7 @@ class Command(BaseCommand):
             phones = list(csv.DictReader(file, delimiter=';'))
 
         for phone in phones:
-            phone = Phone(
+            phone_ = Phone(
                 id=phone['id'],
                 name=phone['name'],
                 price=phone['price'],
@@ -21,5 +21,5 @@ class Command(BaseCommand):
                 release_date=phone['release_date'],
                 lte_exists=phone['lte_exists']
             )
-            phone.save()
+            phone_.save()
 
