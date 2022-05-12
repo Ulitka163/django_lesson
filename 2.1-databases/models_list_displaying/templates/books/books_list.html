@@ -7,6 +7,17 @@
         <div class="header">
             <h1><a href="/books">Каталог</a></h1>
         </div>
+        <div class="content">
+              {% for book in books %}
+            <div class="row">
+                <div class="book col-md-4">
+                    <h2>{{ book.name }}</h2>
+                    <p>Автор: {{ book.author }}</p>
+                    <p>Дата публикации: {{ book.pub_date }}</p>
+                </div>
+            </div>
+              {% endfor %}
+        </div>
         <div class="row">
             <div class="book col-md-4">
                 <h2>Сияние</h2>
