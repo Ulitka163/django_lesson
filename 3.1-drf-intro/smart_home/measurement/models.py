@@ -9,6 +9,7 @@ class Sensor(models.Model):
 
 
 class Measurement(models.Model):
-    ID_sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE)
+    ID_sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE, related_name='measurements')
     temp = models.FloatField()
     measurement_date = models.DateTimeField(auto_now_add=True)
+    nullable = models.ImageField()
