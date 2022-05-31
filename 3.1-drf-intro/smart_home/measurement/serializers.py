@@ -26,7 +26,6 @@ class MeasurementSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         measurement = Measurement.objects.create(**validated_data)
-        measurement.save()
         return measurement
 
 

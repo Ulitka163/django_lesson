@@ -10,5 +10,5 @@ class Sensor(models.Model):
 
 class Measurement(models.Model):
     ID_sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE)
-    temp = models.IntegerField()
+    temp = models.FloatField()
     measurement_date = models.DateTimeField(auto_now_add=True)

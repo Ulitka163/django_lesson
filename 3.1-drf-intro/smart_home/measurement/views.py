@@ -9,7 +9,7 @@ from measurement.models import Sensor, Measurement
 from measurement.serializers import SensorSerialize, MeasurementSerializer, SensorDetailSerializer
 
 
-class ListCreateAPIView(ListAPIView):
+class SensorAPIView(ListAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorSerialize
 
@@ -29,30 +29,17 @@ class ListCreateAPIView(ListAPIView):
         return Response({'status': 'wrong parameters'})
 
 
-class RetrieveUpdateAPIView(RetrieveAPIView):
+class SensorDetailAPIView(RetrieveAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorDetailSerializer
 
 
-class CreateAPIView(APIView):
-    # def get(self, request):
-    #     sensors = Sensor.objects.all()
-    #     ser = SensorSerialize(sensors, many=True)
-    #     return Response(ser.data)
-
+class MeasurementAPIView(APIView):
     def post(self, request):
         serializer = MeasurementSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response({'status': 'OK'})
         return Response({'status': 'wrong parameters'})
-
-    # def patch(self, request, id):
-    #     sensor = Sensor.objects.get(pk=id)
-    #     serializer = SensorSerialize(sensor, data=request.data, partial=True)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response({'status': 'OK'})
-    #     return Response({'status': 'wrong parameters'})
 
 
