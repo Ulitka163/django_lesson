@@ -85,6 +85,9 @@ REST_FRAMEWORK = {
         'user': '10/minute',
         'anon': '1/minute',
     },
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
 }
 
 WSGI_APPLICATION = 'api_with_restrictions.wsgi.application'
@@ -127,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'UTC'
 
