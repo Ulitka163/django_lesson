@@ -3,7 +3,7 @@ import pytest
 from rest_framework.test import APIClient
 from model_bakery import baker
 
-from students.models import Course, Student
+from students.models import Course
 
 
 @pytest.fixture
@@ -24,10 +24,10 @@ def test_course_retrieve(client, courses_factory):
     courses = courses_factory(_quantity=10)
     course_id = courses[2].pk
 
-    response = client.get('/api/v1/courses/', {'id': course_id})
+    response = client.get(f'/api/v1/courses/{course_id}/')
     assert response.status_code == 200
     data = response.json()
-    assert data[0]['id'] == course_id
+    assert data['id'] == course_id
 
 
 @pytest.mark.django_db
@@ -60,7 +60,7 @@ def test_course_update(client, courses_factory):
     response = client.patch(f'/api/v1/courses/{course_id}/', data={"name": "Test"}, content_type='application/json')
     assert response.status_code == 200
     data = response.json()
-    assert data[0]['name'] == 'Test'
+    assert data['name'] == 'Test'
 
 
 @pytest.mark.django_db
