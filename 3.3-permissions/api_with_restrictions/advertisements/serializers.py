@@ -61,4 +61,4 @@ class AdvertisementFavoritesSerializer(serializers.ModelSerializer):
         if self.context["request"].method == 'POST' and \
                 self.context["request"].user.id == data['advertisement'].creator_id:
             raise serializers.ValidationError('Вы не можете добавлять свое объявление в избранное')
-
+        return data
